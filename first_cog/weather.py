@@ -117,25 +117,9 @@ class Weather(commands.Cog):
 
     @weather_set.command(name="guild", aliases=["server"])
     @checks.mod_or_permissions(manage_messages=True)
-    @commands.guild_only()
-    async def set_guild(self, ctx: commands.Context, units: UnitConverter) -> None:
-        """
-        Sets the guild default weather units
-        `units` must be one of imperial, metric, or kelvin
-        """
-        guild = ctx.message.guild
-        await self.config.guild(guild).units.set(units)
-        await ctx.send(_("Server's default units set to `{units}`").format(units=str(units)))
 
     @weather_set.command(name="bot")
     @checks.mod_or_permissions(manage_messages=True)
-    async def set_bot(self, ctx: commands.Context, units: UnitConverter) -> None:
-        """
-        Sets the bots default weather units
-        `units` must be one of imperial, metric, or kelvin
-        """
-        await self.config.units.set(units)
-        await ctx.send(_("Bots default units set to {units}").format(units=str(units)))
 
     @weather_set.command(name="user")
     async def set_user(self, ctx: commands.Context, units: UnitConverter) -> None:
@@ -174,15 +158,8 @@ class Weather(commands.Cog):
         if user_units:
             units = user_units
         params = {"appid": "88660f6af079866a3ef50f491082c386", "units": units}
-        if units == "kelvin":
-            params["units"] = "metric"
         if zipcode:
             params["zip"] = str(zipcode)
-        elif cityid:
-            params["id"] = str(cityid)
-        elif lon and lat:
-            params["lat"] = str(lat)
-            params["lon"] = str(lon)
         else:
             params["q"] = str(location)
         url = "https://api.openweathermap.org/data/2.5/weather?{0}".format(urlencode(params))
