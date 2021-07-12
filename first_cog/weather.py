@@ -30,13 +30,6 @@ class Weather(commands.Cog):
             "metric": {"code": ["m", "c"], "speed": "km/h", "temp": " °C"}
         }
 
-    def format_help_for_context(self, ctx: commands.Context) -> str:
-        """
-        Thanks Sinbad!
-        """
-        pre_processed = super().format_help_for_context(ctx)
-        return f"{pre_processed}\n\nCog Version: {self.__version__}"
-
     async def red_delete_data_for_user(
         self,
         *,
@@ -106,6 +99,7 @@ class Weather(commands.Cog):
         currenttemp = data["main"]["temp"]
         mintemp = data["main"]["temp_min"]
         maxtemp = data["main"]["temp_max"]
+        windspeed = str(data["wind"]["speed"]) + " " + self.unit[units]["speed"]
         city = data["name"]
         embed = discord.Embed(colour=discord.Colour.blue())
         try:
