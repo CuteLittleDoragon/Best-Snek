@@ -126,11 +126,11 @@ class Weather(commands.Cog):
             value="{0:.2f}{1}".format(currenttemp, self.unit[units]["temp"]),
         )
         embed.add_field(
-            name=_("⬇️ **Lowest Temperature**),
+            name=_("⬇️ **Lowest Temperature**"),
             value="{0:.2f}{1}".format(mintemp, self.unit[units]["temp"]),
                   )
         embed.add_field(
-            name=_("⬆️ **Highest Temperature**),
+            name=_("⬆️ **Highest Temperature**"),
             value="{0:.2f}{1}".format(maxtemp, self.unit[units]["temp"]),
                   )
         await ctx.send(embed=embed)
