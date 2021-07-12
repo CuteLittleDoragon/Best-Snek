@@ -92,8 +92,7 @@ class Weather(commands.Cog):
         bot_units = await self.config.units()
         units = "metric"
         params = {"appid": "88660f6af079866a3ef50f491082c386", "units": units}
-        else:
-            params["q"] = str(location)
+        params["q"] = str(location)
         url = "https://api.openweathermap.org/data/2.5/weather?{0}".format(urlencode(params))
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as resp:
