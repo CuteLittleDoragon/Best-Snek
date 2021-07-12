@@ -121,11 +121,11 @@ class Weather(commands.Cog):
             embed.add_field(name=_("🌍 **Location**"), value="{0}, {1}".format(city, country))
         else:
             embed.add_field(
-                name=_("\N{EARTH GLOBE AMERICAS} **Location**"), value=_("*Unavailable*")
+                name=_("🌍 **Location**"), value=_("*Unavailable*")
             )
-        embed.add_field(name=_("\N{CLOUD} **Condition**"), value=condition)
+        embed.add_field(name=_("☁️ **Condition**"), value=condition)
         embed.add_field(
-            name=_("\N{THERMOMETER} **Temperature**"),
+            name=_("🌡️ **Temperature**"),
             value="{0:.2f}{1}".format(currenttemp, self.unit[units]["temp"]),
         )
         await ctx.send(embed=embed)
