@@ -129,7 +129,7 @@ class Weather(commands.Cog):
         if guild:
             guild_units = await self.config.guild(guild).units()
         user_units = await self.config.user(author).units()
-        units = "imperial"
+        units = "metric"
         if bot_units:
             units = bot_units
         if guild_units:
