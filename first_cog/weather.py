@@ -4,7 +4,6 @@ from urllib.parse import urlencode
 
 import aiohttp
 import discord
-from discord.ext.commands.converter import Converter
 from discord.ext.commands.errors import BadArgument
 from redbot.core import Config, checks, commands
 from redbot.core.i18n import Translator, cog_i18n
@@ -12,28 +11,13 @@ from redbot.core.i18n import Translator, cog_i18n
 _ = Translator("Weather", __file__)
 
 
-class UnitConverter(Converter):
-    async def convert(self, ctx: commands.Context, argument: str) -> Optional[str]:
-        new_units = None
-        if argument.lower() in ["f", "imperial", "mph"]:
-            new_units = "imperial"
-        elif argument.lower() in ["c", "metric", "kph"]:
-            new_units = "metric"
-        elif argument.lower() in ["k", "kelvin"]:
-            new_units = "kelvin"
-        elif argument.lower() in ["clear", "none"]:
-            new_units = None
-        else:
-            raise BadArgument(_("`{units}` is not a vaild option!").format(units=argument))
-        return new_units
-
 
 @cog_i18n(_)
 class Weather(commands.Cog):
     """Get weather data from https://openweathermap.org"""
 
-    __author__ = ["TrustyJAID"]
-    __version__ = "1.2.1"
+    __author__ = ["Doragon"]
+    __version__ = "1.00"
 
     def __init__(self, bot):
         self.bot = bot
@@ -75,17 +59,6 @@ class Weather(commands.Cog):
         await ctx.trigger_typing()
         await self.get_weather(ctx, location=location)
 
-    @weather.command(name="zip")
-    @commands.bot_has_permissions(embed_links=True)
-    async def weather_by_zip(self, ctx: commands.Context, *, zipcode: str) -> None:
-        """
-        Display weather in a given location
-        `zipcode` must be a valid ZIP code or `ZIP code, Country Code` (assumes US otherwise)
-        example: `[p]weather zip 20500`
-        """
-        await ctx.trigger_typing()
-        await self.get_weather(ctx, zipcode=zipcode)
-
     @weather.command(name="cityid")
     @commands.bot_has_permissions(embed_links=True)
     async def weather_by_cityid(self, ctx: commands.Context, *, cityid: int) -> None:
@@ -98,7 +71,6 @@ class Weather(commands.Cog):
         await ctx.trigger_typing()
         await self.get_weather(ctx, cityid=cityid)
 
-    @weather.command(name="co", aliases=["coords", "coordinates"])
     @commands.bot_has_permissions(embed_links=True)
     async def weather_by_coordinates(self, ctx: commands.Context, lat: float, lon: float) -> None:
         """
@@ -110,32 +82,15 @@ class Weather(commands.Cog):
         await ctx.trigger_typing()
         await self.get_weather(ctx, lat=lat, lon=lon)
 
-    @commands.group(name="weatherset")
-    async def weather_set(self, ctx: commands.Context) -> None:
-        """Set user or guild default units"""
-        pass
-
     async def get_weather(
         self,
         ctx: commands.Context,
         *,
         location: Optional[str] = None,
-        zipcode: Optional[str] = None,
     ) -> None:
-        guild = ctx.message.guild
         author = ctx.message.author
         bot_units = await self.config.units()
-        guild_units = None
-        if guild:
-            guild_units = await self.config.guild(guild).units()
-        user_units = await self.config.user(author).units()
         units = "metric"
-        if bot_units:
-            units = bot_units
-        if guild_units:
-            units = guild_units
-        if user_units:
-            units = user_units
         params = {"appid": "88660f6af079866a3ef50f491082c386", "units": units}
         if zipcode:
             params["zip"] = str(zipcode)
@@ -173,5 +128,4 @@ class Weather(commands.Cog):
             name=_("\N{THERMOMETER} **Temperature**"),
             value="{0:.2f}{1}".format(currenttemp, self.unit[units]["temp"]),
         )
-        embed.set_footer(text=_("Powered by https://openweathermap.org"))
         await ctx.send(embed=embed)
