@@ -43,9 +43,7 @@ class Weather(commands.Cog):
         self.config.register_guild(**default)
         self.config.register_user(**default)
         self.unit = {
-            "imperial": {"code": ["i", "f"], "speed": "mph", "temp": " °F"},
-            "metric": {"code": ["m", "c"], "speed": "km/h", "temp": " °C"},
-            "kelvin": {"code": ["k", "s"], "speed": "km/h", "temp": " K"},
+            "metric": {"code": ["m", "c"], "speed": "km/h", "temp": " °C"}
         }
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
@@ -160,9 +158,6 @@ class Weather(commands.Cog):
         *,
         location: Optional[str] = None,
         zipcode: Optional[str] = None,
-        cityid: Optional[int] = None,
-        lat: Optional[float] = None,
-        lon: Optional[float] = None,
     ) -> None:
         guild = ctx.message.guild
         author = ctx.message.author
@@ -210,43 +205,5 @@ class Weather(commands.Cog):
             country = ""
         lat, lon = data["coord"]["lat"], data["coord"]["lon"]
         condition = ", ".join(info["main"] for info in data["weather"])
-        windspeed = str(data["wind"]["speed"]) + " " + self.unit[units]["speed"]
-        if units == "kelvin":
-            currenttemp = abs(currenttemp - 273.15)
-            mintemp = abs(maxtemp - 273.15)
-            maxtemp = abs(maxtemp - 273.15)
-        sunrise = datetime.datetime.utcfromtimestamp(
-            data["sys"]["sunrise"] + data["timezone"]
-        ).strftime("%H:%M")
-        sunset = datetime.datetime.utcfromtimestamp(
-            data["sys"]["sunset"] + data["timezone"]
-        ).strftime("%H:%M")
-        embed = discord.Embed(colour=discord.Colour.blue())
-        if len(city) and len(country):
-            embed.add_field(name=_("🌍 **Location**"), value="{0}, {1}".format(city, country))
-        else:
-            embed.add_field(
-                name=_("\N{EARTH GLOBE AMERICAS} **Location**"), value=_("*Unavailable*")
-            )
-        embed.add_field(
-            name=_("\N{STRAIGHT RULER} **Lat,Long**"), value="{0}, {1}".format(lat, lon)
-        )
-        embed.add_field(name=_("\N{CLOUD} **Condition**"), value=condition)
-        embed.add_field(
-            name=_("\N{FACE WITH COLD SWEAT} **Humidity**"), value=data["main"]["humidity"]
-        )
-        embed.add_field(name=_("\N{DASH SYMBOL} **Wind Speed**"), value="{0}".format(windspeed))
-        embed.add_field(
-            name=_("\N{THERMOMETER} **Temperature**"),
-            value="{0:.2f}{1}".format(currenttemp, self.unit[units]["temp"]),
-        )
-        embed.add_field(
-            name=_("\N{HIGH BRIGHTNESS SYMBOL} **Min - Max**"),
-            value="{0:.2f}{1} to {2:.2f}{3}".format(
-                mintemp, self.unit[units]["temp"], maxtemp, self.unit[units]["temp"]
-            ),
-        )
-        embed.add_field(name=_("\N{SUNRISE OVER MOUNTAINS} **Sunrise**"), value=sunrise)
-        embed.add_field(name=_("\N{SUNSET OVER BUILDINGS} **Sunset**"), value=sunset)
         embed.set_footer(text=_("Powered by https://openweathermap.org"))
         await ctx.send(embed=embed)
