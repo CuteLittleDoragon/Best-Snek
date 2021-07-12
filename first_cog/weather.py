@@ -115,27 +115,6 @@ class Weather(commands.Cog):
         """Set user or guild default units"""
         pass
 
-    @weather_set.command(name="guild", aliases=["server"])
-    @checks.mod_or_permissions(manage_messages=True)
-
-    @weather_set.command(name="bot")
-    @checks.mod_or_permissions(manage_messages=True)
-
-    @weather_set.command(name="user")
-    async def set_user(self, ctx: commands.Context, units: UnitConverter) -> None:
-        """
-        Sets the user default weather units
-        `units` must be one of imperial, metric, or kelvin
-        Note: User settings override guild settings.
-        """
-        author = ctx.message.author
-        await self.config.user(author).units.set(units)
-        await ctx.send(
-            _("{author} default units set to `{units}`").format(
-                author=author.display_name, units=str(units)
-            )
-        )
-
     async def get_weather(
         self,
         ctx: commands.Context,
