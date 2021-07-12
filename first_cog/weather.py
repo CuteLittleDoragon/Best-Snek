@@ -109,10 +109,15 @@ class Weather(commands.Cog):
         lat, lon = data["coord"]["lat"], data["coord"]["lon"]
         condition = ", ".join(info["main"] for info in data["weather"])
         if len(city) and len(country):
-            embed.add_field(name=_("🌍 **Location**"), value="{0}, {1}".format(city, country))
+            if lon > -165 and lon < -23:
+                embed.add_field(name=_("🌎 **Location**"), value="{0}, {1}".format(city, country))
+            elif lon > -23 and lon < 90:
+                embed.add_field(name=_("🌍 **Location**"), value="{0}, {1}".format(city, country))
+            else:
+            embed.add_field(name=_("🌏 **Location**"), value="{0}, {1}".format(city, country))
         else:
             embed.add_field(
-                name=_("🌍 **Location**"), value=_("*Unavailable*")
+                name=_("🌐 **Location**"), value=_("*Unavailable*")
             )
         embed.add_field(name=_("☁️ **Condition**"), value=condition)
         embed.add_field(
