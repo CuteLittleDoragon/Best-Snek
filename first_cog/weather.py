@@ -114,7 +114,7 @@ class Weather(commands.Cog):
             elif lon > -23 and lon < 90:
                 embed.add_field(name=_("🌍 **Location**"), value="{0}, {1}".format(city, country))
             else:
-            embed.add_field(name=_("🌏 **Location**"), value="{0}, {1}".format(city, country))
+                embed.add_field(name=_("🌏 **Location**"), value="{0}, {1}".format(city, country))
         else:
             embed.add_field(
                 name=_("🌐 **Location**"), value=_("*Unavailable*")
