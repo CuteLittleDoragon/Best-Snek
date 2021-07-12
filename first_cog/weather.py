@@ -162,5 +162,16 @@ class Weather(commands.Cog):
             country = ""
         lat, lon = data["coord"]["lat"], data["coord"]["lon"]
         condition = ", ".join(info["main"] for info in data["weather"])
+        if len(city) and len(country):
+            embed.add_field(name=_("🌍 **Location**"), value="{0}, {1}".format(city, country))
+        else:
+            embed.add_field(
+                name=_("\N{EARTH GLOBE AMERICAS} **Location**"), value=_("*Unavailable*")
+            )
+        embed.add_field(name=_("\N{CLOUD} **Condition**"), value=condition)
+        embed.add_field(
+            name=_("\N{THERMOMETER} **Temperature**"),
+            value="{0:.2f}{1}".format(currenttemp, self.unit[units]["temp"]),
+        )
         embed.set_footer(text=_("Powered by https://openweathermap.org"))
         await ctx.send(embed=embed)
