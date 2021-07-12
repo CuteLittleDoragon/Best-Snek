@@ -155,6 +155,7 @@ class Weather(commands.Cog):
         mintemp = data["main"]["temp_min"]
         maxtemp = data["main"]["temp_max"]
         city = data["name"]
+        embed = discord.Embed(colour=discord.Colour.blue())
         try:
             country = data["sys"]["country"]
         except KeyError:
