@@ -1,31 +1,21 @@
-# import all necessary commands and libraries
-import discord
-import asyncio
-import logging
+from discord.ext.commands import Cog
+from discord.ext.commands import commands
 
-@client.event
-async def on_ready():
-    print('logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print('-----')
-
-newUserDMMessage = "WELCOME!"
-
-#Public Welcome
-@client.event
-async def on_member_join(member):
-    print("Recognized that " + member.name + " joined")
-    await client.send_message(member, newUserDMMessage)
-    await client.send_message(discord.Object(id='CHANNELID'), 'Welcome!')
-    print("Sent message to " + member.name)
-    print("Sent message about " + member.name + " to #CHANNEL")
-
-#Mod Leave Announcement
-@client.event
-async def on_member_remove(member):
-    print("Recognized that " + member.name + " left")
-    await client.send_message(discord.Object(id='CHANNELID'), '**' + member.mention + '** just left.')
-    print("Sent message to #CHANNEL")
-
-client.run('token')
+class Welcome(Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        
+        @Cog.listener()
+        async def on_ready(self):
+            if not self.bot.ready:
+                self.bot.cogs_ready.ready_up("welcome")
+                
+        @Cog.listener()
+        asynce def on_member_join(self, member):
+            for channel in member.server.channels:
+                if channel.name == 'general':
+                     await self.bot.send(f"Welcome to **{member.guild.name}** {member.mention}!")
+                        
+                        
+def setup(bot):
+    bot.add_cog(Welcome(bot))
