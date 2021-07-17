@@ -12,7 +12,8 @@ class Welcome(commands.Cog):
                 
     @commands.Cog.listener()
     async def on_member_join(member):
-        member.send(f"Hello")
+        destination = self.bot.get_user(member)
+        destination.send("Hello")
             
     @commands.command()    
     async def test(self, ctx, echo: str, echo2: str):
