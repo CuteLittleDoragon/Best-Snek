@@ -14,7 +14,7 @@ class Welcome(commands.Cog):
             await ctx.send(f"Welcome to **{member.guild.name}**!")
             
             
-        async def to-test(self, ctx: commands.Context):
+        async def totest(self, ctx: commands.Context):
         """
         Display weather in a given location
         `location` must take the form of `city, Country Code`
