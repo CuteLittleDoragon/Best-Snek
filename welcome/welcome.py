@@ -11,7 +11,6 @@ class Welcome(commands.Cog):
                 self.bot.cogs_ready.ready_up("welcome")
                 
         @commands.Cog.listener()
-        async def on_member_join(self, member, ctx: commands.Context):
-            member = 292380427602100225
-            await member.send(f"Heello")
+        async def on_member_join(member):
+            print("Recognised that a member called " + member.name + " joined")
                         
