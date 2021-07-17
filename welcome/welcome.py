@@ -1,5 +1,4 @@
-from discord.ext.commands import Cog
-from discord.ext.commands import commands
+import discord
 
 class Welcome(Cog):
     def __init__(self, bot):
