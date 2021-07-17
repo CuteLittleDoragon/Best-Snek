@@ -1,6 +1,6 @@
 from redbot.core import commands
 
-class Welcome(commands.Cog):
+class welcome(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
