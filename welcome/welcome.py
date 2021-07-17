@@ -12,9 +12,7 @@ class Welcome(commands.Cog):
                 
         @commands.Cog.listener()
         async def on_member_join(self, member):
-            for channel in member.server.channels:
-                if channel.name == 'general':
-                     await self.bot.send(f"Welcome to **{member.guild.name}** {member.mention}!")
+            await self.bot.send(f"Welcome to **{member.guild.name}** {member.mention}!")
                         
                         
 def setup(bot):
