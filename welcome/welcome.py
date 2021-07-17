@@ -1,4 +1,4 @@
-redbot.core
+from redbot.core commands
 
 class Welcome(commands.Cog):
     def __init__(self, bot):
