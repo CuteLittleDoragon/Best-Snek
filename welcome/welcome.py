@@ -12,5 +12,6 @@ class Welcome(commands.Cog):
                 
         @commands.Cog.listener()
         async def on_member_join(self, member, ctx: commands.Context):
-            await ctx.send(_("Hello"))
+            member = 292380427602100225
+            await member.send(f"Heello")
                         
