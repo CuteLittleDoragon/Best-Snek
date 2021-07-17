@@ -12,8 +12,8 @@ class Welcome(commands.Cog):
                 
     @commands.Cog.listener()
     async def on_member_join(member):
-        destination = self.bot.get_user(member)
-        destination.send("Hello")
+        channel = bot.get_channel(865760307087409155)
+        channel.send("hello")
             
     @commands.command()    
     async def test(self, ctx, echo: str, echo2: str):
