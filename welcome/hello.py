@@ -12,8 +12,8 @@ class Welcome(commands.Cog):
                 
     @commands.Cog.listener()
     async def on_member_join(member):
-        self.bot.get_user(292380427602100225)
-        await destination.send("hello")
+        role = get(member.guild.roles, id=865781081277202533)
+        await member.add_roles(role)
             
     @commands.command()    
     async def test(self, ctx, echo: str, echo2: str):
