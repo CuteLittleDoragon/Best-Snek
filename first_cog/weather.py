@@ -51,10 +51,6 @@ class Weather(commands.Cog):
         """
         await ctx.trigger_typing()
         await self.get_weather(ctx, location=location)
-
-    @commands.command()    
-    async def test(self, ctx, echo: str, echo2: str):
-        await ctx.send(echo + " " + echo2)
     @weather.command(name="cityid")
     @commands.bot_has_permissions(embed_links=True)
     async def weather_by_cityid(self, ctx: commands.Context, *, cityid: int) -> None:
