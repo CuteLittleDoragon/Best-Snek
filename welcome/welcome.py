@@ -5,12 +5,12 @@ class Welcome(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-        @Cog.listener()
+        @commands.Cog.listener()
         async def on_ready(self):
             if not self.bot.ready:
                 self.bot.cogs_ready.ready_up("welcome")
                 
-        @Cog.listener()
+        @commands.Cog.listener()
         async def on_member_join(self, member):
             for channel in member.server.channels:
                 if channel.name == 'general':
