@@ -13,7 +13,7 @@ class welcome(commands.Cog):
         async def on_member_join(self, member, ctx: commands.Context,):
             await ctx.send(f"Welcome to **{member.guild.name}**!")
             
-            
+        @commands.command()    
         async def totest(self, ctx: commands.Context):
             await ctx.send("hello")
             
