@@ -15,7 +15,7 @@ class welcome(commands.Cog):
             await ctx.send(f"Welcome to **{member.guild.name}**!")
             
         @commands.command()    
-        async def totest(self, ctx):
-            await ctx.send("hello")
+        async def test(self, ctx, echo: str, echo2: str):
+            await ctx.send(echo + " " + echo2)
             
                         
