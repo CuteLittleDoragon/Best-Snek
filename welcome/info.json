@@ -1,0 +1,9 @@
+{
+    "AUTHOR" : ["Doragon"],
+    "SHORT" : "Weather cog",
+    "DESCRIPTION" : "Outputs Weather given city",
+    "DISABLED" : false,
+    "NAME" : "Weather",
+    "TAGS" : ["utility"],
+    "INSTALL_MSG" : "Thank you for installing this cog."
+}
