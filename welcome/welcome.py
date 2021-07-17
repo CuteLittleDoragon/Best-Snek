@@ -1,4 +1,5 @@
 import discord
+from redbot.core import commands
 
 class Welcome(commands.Cog):
     def __init__(self, bot):
