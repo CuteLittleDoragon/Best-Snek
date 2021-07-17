@@ -13,4 +13,13 @@ class Welcome(commands.Cog):
         async def on_member_join(self, member, ctx: commands.Context,):
             await ctx.send(f"Welcome to **{member.guild.name}**!")
             
+            
+       async def to-test(self, ctx: commands.Context) -> None:
+        """
+        Display weather in a given location
+        `location` must take the form of `city, Country Code`
+        example: `[p]weather New York,US`
+        """
+        await ctx.send("hello")
+            
                         
