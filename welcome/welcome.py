@@ -15,11 +15,6 @@ class Welcome(commands.Cog):
             
             
         async def totest(self, ctx: commands.Context):
-        """
-        Display weather in a given location
-        `location` must take the form of `city, Country Code`
-        example: `[p]weather New York,US`
-        """
             await ctx.send("hello")
             
                         
