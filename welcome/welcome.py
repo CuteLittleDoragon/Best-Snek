@@ -1,5 +1,4 @@
-from discord import Cog
-from discord import commands
+import discord
 
 class Welcome(Cog):
     def __init__(self, bot):
