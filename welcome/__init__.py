@@ -1,4 +1,4 @@
-from .Welcome import Welcome
+from .hello import Welcome
 
 import json
 
