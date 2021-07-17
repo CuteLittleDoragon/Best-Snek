@@ -1,4 +1,5 @@
 from redbot.core import commands
+import discord
 
 class welcome(commands.Cog):
     def __init__(self, bot):
@@ -14,7 +15,7 @@ class welcome(commands.Cog):
             await ctx.send(f"Welcome to **{member.guild.name}**!")
             
         @commands.command()    
-        async def totest(self, ctx: commands.Context):
+        async def totest(self, ctx):
             await ctx.send("hello")
             
                         
