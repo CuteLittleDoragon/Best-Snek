@@ -1,4 +1,7 @@
 from .Welcome import Welcome
 
+import json
+
 def setup(bot):
-    bot.add_cog(Welcome(bot))
+    n = Weather(bot)
+    bot.add_cog(n)
