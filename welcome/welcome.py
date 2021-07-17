@@ -11,7 +11,7 @@ class Welcome(commands.Cog):
                 self.bot.cogs_ready.ready_up("welcome")
                 
         @commands.Cog.listener()
-        async def on_member_join(member):
+        async def on_member_join(member: discord.Member):
             await member.send('Private message')
             
                         
