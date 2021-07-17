@@ -11,6 +11,6 @@ class Welcome(commands.Cog):
                 self.bot.cogs_ready.ready_up("welcome")
                 
         @commands.Cog.listener()
-        async def on_member_join(self, member):
-            await self.bot.get_channel(707285499219279932).send(f"Welcome to **{member.guild.name}** {member.mention}!")
+        async def on_member_join(self, member, cts: commands.Context):
+            await ctx.send(_("Hello"))
                         
