@@ -12,6 +12,6 @@ class Welcome(commands.Cog):
                 
         @commands.Cog.listener()
         async def on_member_join(member):
-            await self.bot.get_channel(696799466220421191).send(f"Hello")
+            self.bot.say("hello")
             
                         
