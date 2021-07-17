@@ -1,4 +1,4 @@
-import discord
+redbot.core
 
 class Welcome(commands.Cog):
     def __init__(self, bot):
