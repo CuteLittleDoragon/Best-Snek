@@ -14,13 +14,14 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         channel = self.bot.guild.system_channel
+        awat __dm_user(member, channel)
         await channel.send("hello")                  
     
     
     
     
-    async def __dm_user(self, member: discord.Member):
-        await member.send("hello")
+    async def __dm_user(self, member: discord.Member, channel):
+        await member.send(channel)
         
             
     @commands.command()    
