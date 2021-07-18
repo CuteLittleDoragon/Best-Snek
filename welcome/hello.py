@@ -14,7 +14,7 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         channel = self.bot.guild.system_channel
-        awat __dm_user(member, channel)
+        await __dm_user(member, channel)
         await channel.send("hello")                  
     
     
