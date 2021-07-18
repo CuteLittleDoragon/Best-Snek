@@ -18,12 +18,7 @@ class Welcome(commands.Cog):
     
     
     async def __dm_user(self, member: discord.Member) -> None:
-        """Sends a DM to the user with a filled-in message_format."""
-
-        message_format = await self.config.guild(member.guild).join.whisper.message()
-
-        try:
-            await member.send(message_format.format(member=member, server=member.guild))
+            await member.send("hello")
             
     @commands.command()    
     async def test(self, ctx, echo: str, echo2: str):
