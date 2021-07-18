@@ -1,7 +1,7 @@
 from .hello import Welcome
+  
+from redbot.core.bot import Red
 
-import json
 
-def setup(bot):
-    n = Welcome(bot)
-    bot.add_cog(n)
+def setup(bot: Red):
+    bot.add_cog(Welcome())
