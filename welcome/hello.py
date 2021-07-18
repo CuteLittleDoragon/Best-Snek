@@ -21,7 +21,7 @@ class Welcome(commands.Cog):
     
     
     
-    async def __dm_user(self, member: discord.Member:
+    async def __dm_user(self, member: discord.Member):
         await member.send("hello")
         
             
