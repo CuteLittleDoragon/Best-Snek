@@ -2,7 +2,7 @@ import discord
 from redbot.core import commands
 
 
-class Welcome(commands.Cog):
+class Welcome(commands.Cog) -> None:
     def __init__(self, bot):
         self.bot = bot
         
