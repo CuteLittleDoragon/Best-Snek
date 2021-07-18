@@ -15,15 +15,14 @@ class Welcome(commands.Cog):
     async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
         channel = guild.system_channel
-        await self.__dm_user(member, channel)
-        #await channel.send("hello")                  
+        await self.__dm_user(member)
+        await channel.send("hello")                  
     
     
     
     
-    async def __dm_user(self, member: discord.Member, integ: int):
+    async def __dm_user(self, member: discord.Member:
         await member.send("hello")
-        await member.send(integ)
         
             
     @commands.command()    
