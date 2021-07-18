@@ -1,5 +1,6 @@
-from redbot.core import commands
 import discord
+from redbot.core import commands
+
 
 class Welcome(commands.Cog):
     def __init__(self, bot):
@@ -18,7 +19,8 @@ class Welcome(commands.Cog):
     
     
     async def __dm_user(self, member: discord.Member) -> None:
-            await member.send("hello")
+        await member.send("hello")
+        
             
     @commands.command()    
     async def test(self, ctx, echo: str, echo2: str):
