@@ -12,13 +12,13 @@ class Welcome(commands.Cog) -> None:
             self.bot.cogs_ready.ready_up("welcome")
                 
     @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member) -> None:
+    async def on_member_join(self, member: discord.Member):
         await self.__dm_user(member)
     
     
     
     
-    async def __dm_user(self, member: discord.Member) -> None:
+    async def __dm_user(self, member: discord.Member):
         await member.send("hello")
         
             
