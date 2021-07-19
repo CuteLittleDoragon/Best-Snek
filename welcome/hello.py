@@ -3,6 +3,7 @@ from redbot.core import  Config, commands, checks
 
 
 class Welcome(commands.Cog):
+    default_whisper = "Hey there {member.name}, welcome to {server.name}!"
     guild_defaults = {"channel": None,
     "join": {
             "enabled": True,
