@@ -49,9 +49,8 @@ class Welcome(commands.Cog):
         """
 
         channel = None
-
-        if event == "default":
-            channel_id: int = await self.config.guild(guild).channel()
+        
+        channel_id: int = await self.config.guild(guild).channel()
 
         if channel_id is not None:
             channel = guild.get_channel(channel_id)
