@@ -4,7 +4,7 @@ from redbot.core import  Config, commands
 
 class Welcome(commands.Cog):
     
-     guild_defaults = {"channel": None}
+    guild_defaults = {"channel": None}
     
     def __init__(self, bot):
         self.bot = bot
