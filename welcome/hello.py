@@ -98,7 +98,7 @@ class Welcome(commands.Cog):
             c = await self.config.guild(guild).all()
 
             channel = await self.__get_channel(guild)
-            join_channel = await self.__get_channel(guild
+            join_channel = await self.__get_channel(guild)
 
             j = c["join"]
 
