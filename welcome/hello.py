@@ -72,6 +72,23 @@ class Welcome(commands.Cog):
 
         return channel
 
+    @welcomeset.command(name="channel")
+    async def welcomeset_channel(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
+        """Sets the channel to be used for event notices."""
+
+        if not Welcome.__can_speak_in(channel):
+            await ctx.send(
+                f"I do not have permission to send messages in {channel.mention}. "
+                "Check your permission settings and try again."
+            )
+            return
+
+        guild = ctx.guild
+        await self.config.guild(guild).channel.set(channel.id)
+
+        await ctx.send(f"I will now send event notices to {channel.mention}.")
+    
+    
     
     @commands.group(aliases=["welcome"])
     @commands.guild_only()
