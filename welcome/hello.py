@@ -51,7 +51,7 @@ class Welcome(commands.Cog):
     
     
     
-    asynce def __output_msg(self, guild: discord.guild, user: Union[discord.Member, discord.User], channel, message):
+    async def __output_msg(self, guild: discord.guild, user: Union[discord.Member, discord.User], channel, message):
         await channel.send(message.format(member=user))     
     
     async def __dm_user(self, member: discord.Member, msg):
