@@ -119,7 +119,6 @@ class Welcome(commands.Cog):
                         f"**Enabled:** {j['enabled']}\n"
                         f"**Channel:** {join_channel.mention}\n"
                         f"**Delete previous:** {j['delete']}\n"
-                        f"**Whisper state:** {jw['state']}\n"
                         f"**Whisper message:** {whisper_message}\n"
                         f"**Messages:** {len(j['messages'])}; do `{ctx.prefix}welcomeset join msg list` for a list\n"
                         f"**Bot message:** {j['bot']}"
