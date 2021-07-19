@@ -40,7 +40,7 @@ class Welcome(commands.Cog):
         
         #If you want to dm the person (was used for tests)
         #await self.__dm_user(member)
-        await channel.send("hello")                  
+        await channel.send({member.mention}"https://cdn.discordapp.com/attachments/763200171743772682/866456336454516746/Miia_Greeting.mp4")                  
     
     
     
