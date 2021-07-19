@@ -105,9 +105,6 @@ class Welcome(commands.Cog):
 
             j = c["join"]
 
-
-            whisper_message = jw["message"] if len(jw["message"]) <= 50 else jw["message"][:50] + "..."
-
             if await ctx.embed_requested():
                 emb = discord.Embed(color=await ctx.embed_color(), title="Current Welcome Settings")
                 emb.add_field(
