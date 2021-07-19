@@ -1,4 +1,7 @@
 import discord
+from typing import Union
+
+
 from redbot.core import  Config, commands, checks
 
 
