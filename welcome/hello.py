@@ -161,7 +161,7 @@ class Welcome(commands.Cog):
         guild = ctx.guild
         await self.config.guild(guild).channel.set(channel.id)
 
-        await ctx.send(f"I will now send event notices to {channel.mention}.")
+        await ctx.send(f"I will now send notices to {channel.mention}.")
         
         
         
