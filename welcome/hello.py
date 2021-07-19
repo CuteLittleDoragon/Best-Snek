@@ -33,7 +33,7 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
-        channel_id: int = await self.config.guild(guild).channel()
+        channel = self.__get_channel(member.guild)
         
         
         #channel = guild.system_channel
@@ -54,7 +54,7 @@ class Welcome(commands.Cog):
         await ctx.send(echo + " " + echo2)
             
     
-    async def __get_channel(self, guild: discord.Guild, event: str) -> discord.TextChannel:
+    async def __get_channel(self, guild: discord.Guild) -> discord.TextChannel:
         """Gets the best text channel to use for event notices.
         Order of priority:
         1. User-defined channel
@@ -99,9 +99,6 @@ class Welcome(commands.Cog):
 
             channel = await self.__get_channel(guild, "default")
             join_channel = await self.__get_channel(guild, "join")
-            leave_channel = await self.__get_channel(guild, "leave")
-            ban_channel = await self.__get_channel(guild, "ban")
-            unban_channel = await self.__get_channel(guild, "unban")
 
             j = c["join"]
 
