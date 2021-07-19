@@ -4,7 +4,7 @@ from redbot.core import  Config, commands, checks
 
 class Welcome(commands.Cog):
     default_whisper = "Hey there {member.name}, welcome to {server.name}!"
-    default_join = "Welcome {member.mention} to {server.name}!"
+    default_join = "{member.mention} \n https://cdn.discordapp.com/attachments/763200171743772682/866456336454516746/Miia_Greeting.mp4""
     guild_defaults = {"channel": None, "enabled": False,
     "join": {
             "enabled": True,
