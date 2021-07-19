@@ -203,3 +203,12 @@ class Welcome(commands.Cog):
         await self.config.guild(guild).channel.set(channel.id)
 
         await ctx.send(f"I will now send event notices to {channel.mention}.")
+        
+        
+        
+    @staticmethod
+    def __can_speak_in(channel: discord.TextChannel) -> bool:
+        """Indicates whether the bot has permission to speak in channel."""
+
+        return channel.permissions_for(channel.guild.me).send_messages
+
