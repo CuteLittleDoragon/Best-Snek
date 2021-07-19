@@ -7,6 +7,9 @@ class Welcome(commands.Cog):
     
     def __init__(self, bot):
         self.bot = bot
+        self.config = Config.get_conf(self, 123456788)
+        self.config.register_guild(**self.guild_defaults)
+        
         
     @commands.Cog.listener()
     async def on_ready(self):
