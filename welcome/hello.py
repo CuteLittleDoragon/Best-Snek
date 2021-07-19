@@ -1,5 +1,5 @@
 import discord
-from redbot.core import commands
+from redbot.core import  Config, commands
 
 
 class Welcome(commands.Cog):
@@ -14,8 +14,13 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
-        channel = guild.system_channel
-        await self.__dm_user(member)
+        channel_id: int = await self.config.guild(guild).channel()
+        
+        
+        #channel = guild.system_channel
+        
+        #If you want to dm the person (was used for tests)
+        #await self.__dm_user(member)
         await channel.send("hello")                  
     
     
