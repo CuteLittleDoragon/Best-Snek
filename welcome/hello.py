@@ -34,7 +34,7 @@ class Welcome(commands.Cog):
             self.bot.cogs_ready.ready_up("welcome")
                 
     @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member:
+    async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
         channel = await self.__get_channel(guild)
         
