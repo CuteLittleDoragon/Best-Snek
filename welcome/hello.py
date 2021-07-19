@@ -1,9 +1,8 @@
 import discord
-from redbot.core import  Config, commands
+from redbot.core import  Config, commands, checks
 
 
 class Welcome(commands.Cog):
-    
     guild_defaults = {"channel": None}
     
     def __init__(self, bot):
