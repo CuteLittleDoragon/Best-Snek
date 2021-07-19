@@ -39,6 +39,7 @@ class Welcome(commands.Cog):
         channel = await self.__get_channel(guild)
         
         user =  Union[discord.Member, discord.User]
+        await self.__dm_user(member, user)
         message = "{member.mention} https://cdn.discordapp.com/attachments/763200171743772682/866456336454516746/Miia_Greeting.mp4"
         #channel = guild.system_channel
         
@@ -49,8 +50,9 @@ class Welcome(commands.Cog):
     
     
     
-    async def __dm_user(self, member: discord.Member):
+    async def __dm_user(self, member: discord.Member, msg):
         await member.send("hello")
+        await member.send(msg)
         
             
     @commands.command()    
