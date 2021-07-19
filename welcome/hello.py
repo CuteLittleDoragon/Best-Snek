@@ -97,8 +97,8 @@ class Welcome(commands.Cog):
             guild: discord.Guild = ctx.guild
             c = await self.config.guild(guild).all()
 
-            channel = await self.__get_channel(guild, "default")
-            join_channel = await self.__get_channel(guild, "join")
+            channel = await self.__get_channel(guild)
+            join_channel = await self.__get_channel(guild
 
             j = c["join"]
 
