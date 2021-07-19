@@ -33,7 +33,7 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
-        channel = self.__get_channel(member.guild)
+        channel = await self.__get_channel(guild)
         
         
         #channel = guild.system_channel
