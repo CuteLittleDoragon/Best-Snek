@@ -3,7 +3,19 @@ from redbot.core import  Config, commands, checks
 
 
 class Welcome(commands.Cog):
-    guild_defaults = {"channel": None}
+    guild_defaults = {"channel": None,
+    "join": {
+            "enabled": True,
+            "channel": None,
+            "delete": False,
+            "last": None,
+            "counter": 0,
+            "whisper": {"state": "off", "message": default_whisper},
+            "messages": [default_join],
+            "bot": None,
+        }
+                     }                  
+    
     
     def __init__(self, bot):
         self.bot = bot
@@ -90,10 +102,7 @@ class Welcome(commands.Cog):
             unban_channel = await self.__get_channel(guild, "unban")
 
             j = c["join"]
-            jw = j["whisper"]
-            v = c["leave"]
-            b = c["ban"]
-            u = c["unban"]
+
 
             whisper_message = jw["message"] if len(jw["message"]) <= 50 else jw["message"][:50] + "..."
 
@@ -117,37 +126,6 @@ class Welcome(commands.Cog):
                         f"**Bot message:** {j['bot']}"
                     ),
                 )
-                emb.add_field(
-                    name="Leave",
-                    inline=False,
-                    value=(
-                        f"**Enabled:** {v['enabled']}\n"
-                        f"**Channel:** {leave_channel.mention}\n"
-                        f"**Delete previous:** {v['delete']}\n"
-                        f"**Messages:** {len(v['messages'])}; do `{ctx.prefix}welcomeset leave msg list` for a list\n"
-                    ),
-                )
-                emb.add_field(
-                    name="Ban",
-                    inline=False,
-                    value=(
-                        f"**Enabled:** {b['enabled']}\n"
-                        f"**Channel:** {ban_channel.mention}\n"
-                        f"**Delete previous:** {b['delete']}\n"
-                        f"**Messages:** {len(b['messages'])}; do `{ctx.prefix}welcomeset ban msg list` for a list\n"
-                    ),
-                )
-                emb.add_field(
-                    name="Unban",
-                    inline=False,
-                    value=(
-                        f"**Enabled:** {u['enabled']}\n"
-                        f"**Channel:** {unban_channel.mention}\n"
-                        f"**Delete previous:** {u['delete']}\n"
-                        f"**Messages:** {len(u['messages'])}; do `{ctx.prefix}welcomeset unban msg list` for a list\n"
-                    ),
-                )
-
                 await ctx.send(embed=emb)
             else:
                 msg = box(
@@ -157,26 +135,6 @@ class Welcome(commands.Cog):
                     f"    Enabled: {j['enabled']}\n"
                     f"    Channel: {join_channel}\n"
                     f"    Delete previous: {j['delete']}\n"
-                    f"    Whisper:\n"
-                    f"      State: {jw['state']}\n"
-                    f"      Message: {whisper_message}\n"
-                    f"    Messages: {len(j['messages'])}; do '{ctx.prefix}welcomeset join msg list' for a list\n"
-                    f"    Bot message: {j['bot']}\n"
-                    f"  Leave:\n"
-                    f"    Enabled: {v['enabled']}\n"
-                    f"    Channel: {leave_channel}\n"
-                    f"    Delete previous: {v['delete']}\n"
-                    f"    Messages: {len(v['messages'])}; do '{ctx.prefix}welcomeset leave msg list' for a list\n"
-                    f"  Ban:\n"
-                    f"    Enabled: {b['enabled']}\n"
-                    f"    Channel: {ban_channel}\n"
-                    f"    Delete previous: {b['delete']}\n"
-                    f"    Messages: {len(b['messages'])}; do '{ctx.prefix}welcomeset ban msg list' for a list\n"
-                    f"  Unban:\n"
-                    f"    Enabled: {u['enabled']}\n"
-                    f"    Channel: {unban_channel}\n"
-                    f"    Delete previous: {u['delete']}\n"
-                    f"    Messages: {len(u['messages'])}; do '{ctx.prefix}welcomeset unban msg list' for a list\n",
                     "Current Welcome Settings",
                 )
 
