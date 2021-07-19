@@ -39,12 +39,12 @@ class Welcome(commands.Cog):
         channel = await self.__get_channel(guild)
         
         user =  Union[discord.Member, discord.User]
-        
+        message = "{member.mention} https://cdn.discordapp.com/attachments/763200171743772682/866456336454516746/Miia_Greeting.mp4"
         #channel = guild.system_channel
         
         #If you want to dm the person (was used for tests)
         #await self.__dm_user(member)
-        await channel.send("{user.mention} https://cdn.discordapp.com/attachments/763200171743772682/866456336454516746/Miia_Greeting.mp4")                  
+        await channel.send(message.format(member=user))                  
     
     
     
