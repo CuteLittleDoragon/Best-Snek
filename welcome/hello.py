@@ -65,7 +65,7 @@ class Welcome(commands.Cog):
             
     @commands.command()
     async def my_chance(self, channel):
-        channel_id = await await self.bot.get_channel(channel)
+        channel_id = await self.bot.get_channel(channel)
         await channel_id.send("https://cdn.discordapp.com/attachments/763200171743772682/867144101132369960/-AOmundson-_Monster_Musume_no_Iru_Nichijou_OVA_-_02_-1-.1080_1_online-video-cutter.com.mp4")
     
     async def __get_channel(self, guild: discord.Guild) -> discord.TextChannel:
