@@ -7,7 +7,7 @@ from redbot.core import  Config, commands, checks
 
 class Welcome(commands.Cog):
     default_whisper = "Hey there {member.name}, welcome to {server.name}!"
-    default_join = "{member.mention} https://cdn.discordapp.com/attachments/763200171743772682/866456336454516746/Miia_Greeting.mp4"
+    default_join = "{member.mention} https://cdn.discordapp.com/attachments/865760307087409155/879030917472067624/Miia_Greeting.mp4"
     guild_defaults = {"channel": None, "enabled": False,
     "join": {
             "enabled": True,
@@ -40,7 +40,7 @@ class Welcome(commands.Cog):
         
         user =  Union[discord.Member, discord.User]
         #await self.__dm_user(member, user)
-        message = "{member.mention} https://cdn.discordapp.com/attachments/763200171743772682/866456336454516746/Miia_Greeting.mp4"
+        message = "{member.mention} https://cdn.discordapp.com/attachments/865760307087409155/879030917472067624/Miia_Greeting.mp4"
         #channel = guild.system_channel
         
         await self.__output_msg(guild, member, channel, message)
@@ -65,7 +65,7 @@ class Welcome(commands.Cog):
             
     @commands.command()
     async def my_chance(self, ctx: commands.Context, channel: discord.TextChannel):
-        await channel.send("https://cdn.discordapp.com/attachments/763200171743772682/867149841250123776/One_Less_Rival.mp4")
+        await channel.send("https://cdn.discordapp.com/attachments/865760307087409155/879031015866261514/One_Less_Rival.mp4")
     
     async def __get_channel(self, guild: discord.Guild) -> discord.TextChannel:
         """Gets the best text channel to use for event notices.
