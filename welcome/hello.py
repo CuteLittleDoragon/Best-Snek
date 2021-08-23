@@ -40,7 +40,7 @@ class Welcome(commands.Cog):
         
         user =  Union[discord.Member, discord.User]
         #await self.__dm_user(member, user)
-        message = "Welcome to the server, {member.mention}! Enjoy your stay! https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
+        message = "Welcome to the server, {member.mention}! Enjoy your stay! \n https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
         #channel = guild.system_channel
         
         await self.__output_msg(guild, member, channel, message)
