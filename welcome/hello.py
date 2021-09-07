@@ -6,7 +6,7 @@ from redbot.core import  Config, commands, checks
 
 
 class Welcome(commands.Cog):
-    default_whisper = "Hey there {member.name}, welcome to {server.name}!"
+    default_whisper = "Hey there {member.name}, welcome to {server.name}! The Imagine Day starts at 3:30 PM."
     default_join = "{member.mention} https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
     guild_defaults = {"channel": None, "enabled": False,
     "join": {
