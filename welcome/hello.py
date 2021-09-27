@@ -85,14 +85,14 @@ class Welcome(commands.Cog):
 
         if channel_id is not None:
             if event_type == "join":
-                channel = guild.get_channel(await self.config.guild(guild).join_channel(), "join")
+                channel = guild.get_channel(await self.config.guild(guild).join_channel())
             elif event_type == "leave":
-                channel = guild.get_channel(await self.config.guild(guild).leave_channel(), "leave")
+                channel = guild.get_channel(await self.config.guild(guild).leave_channel())
             else:
-                channel = guild.get_channel(await self.config.guild(guild).channel(), "none")
+                channel = guild.get_channel(await self.config.guild(guild).channel())
 
         if channel is None or not Welcome.__can_speak_in(channel):
-            channel = guild.get_channel(await self.config.guild(guild).channel(), "none")
+            channel = guild.get_channel(await self.config.guild(guild).channel())
 
         if channel is None or not Welcome.__can_speak_in(channel):
             channel = guild.system_channel
