@@ -148,7 +148,7 @@ class Welcome(commands.Cog):
                 )
                 emb.add_field(
                     name="Leave",
-                    inline=Fa;se,
+                    inline=False,
                     value=(
                         f"**Enabled:** {l['enabled']}\n"
                         f"**Channel:** {leave_channel.mention}\n"
