@@ -44,8 +44,7 @@ class Welcome(commands.Cog):
     async def on_member_remove(self, member: discord.Member):
         guild: discord.Guild = member.guild
         channel = await self.__get_channel(guild, "leave")
-        user =  Union[discord.Member, discord.User]
-        message = "Cya!"
+        message = "Cya {member}!"
         
         await self.__output_msg(guild, member, channel, message)
         
