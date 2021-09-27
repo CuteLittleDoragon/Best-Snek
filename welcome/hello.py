@@ -40,6 +40,19 @@ class Welcome(commands.Cog):
         #await self.__dm_user(member)
         #await channel.send(message.format(member=user))                  
     
+    @commands.Cog.listener()
+    async def on_member_leave(self, member: discord.Member):
+        guild: discord.Guild = member.guild
+        channel = await self.__get_leave_channel(guild)
+        
+        user =  Union[discord.Member, discord.User]
+        message = "Cya {member.mention}!"
+        
+        await self.__output_msg(guild, member, channel, message)
+        
+        #If you want to dm the person (was used for tests)
+        #await self.__dm_user(member)
+        #await channel.send(message.format(member=user))    
     
     
     async def __output_msg(self, guild: discord.guild, user: Union[discord.Member, discord.User], channel, message):
@@ -172,7 +185,7 @@ class Welcome(commands.Cog):
         guild = ctx.guild
         await self.config.guild(guild).channel.set(channel.id)
 
-        await ctx.send(f"I will now send notices to {channel.mention}.")
+        await ctx.send(f"I will now send join notices to {channel.mention}.")
         
     @welcomeset.command(name="leave")
     async def welcomeset_leave(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
@@ -188,7 +201,7 @@ class Welcome(commands.Cog):
         guild = ctx.guild
         await self.config.guild(guild).channel.set(channel.id)
 
-        await ctx.send(f"I will now send notices to {channel.mention}.")
+        await ctx.send(f"I will now send leave notices to {channel.mention}.")
         
         
     @staticmethod
