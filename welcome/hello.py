@@ -183,7 +183,7 @@ class Welcome(commands.Cog):
             return
 
         guild = ctx.guild
-        await self.config.guild(guild).channel.set(channel.id)
+        await self.config.guild(guild).join_channel.set(channel.id)
 
         await ctx.send(f"I will now send join notices to {channel.mention}.")
         
@@ -199,7 +199,7 @@ class Welcome(commands.Cog):
             return
 
         guild = ctx.guild
-        await self.config.guild(guild).channel.set(channel.id)
+        await self.config.guild(guild).leave_channel.set(channel.id)
 
         await ctx.send(f"I will now send leave notices to {channel.mention}.")
         
