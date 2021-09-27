@@ -8,6 +8,7 @@ from redbot.core import  Config, commands, checks
 class Welcome(commands.Cog):
     default_whisper = "Hey there {member.name}, welcome to {server.name}!"
     default_join = "{member.mention} https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
+    default_leave = "bye"
     guild_defaults = {"channel": None, "enabled": False,
     "join": {
             "enabled": True,
@@ -17,6 +18,16 @@ class Welcome(commands.Cog):
             "counter": 0,
             "whisper": {"state": "off", "message": default_whisper},
             "messages": [default_join],
+            "bot": None,
+        }
+     "leave": {
+            "enabled": True,
+            "channel": None,
+            "delete": False,
+            "last": None,
+            "counter": 0,
+            "whisper": {"state": "off", "message": default_whisper},
+            "messages": [default_leave],
             "bot": None,
         }
                      }                  
@@ -112,8 +123,10 @@ class Welcome(commands.Cog):
 
             channel = await self.__get_channel(guild)
             join_channel = await self.__get_channel(guild)
+            leave_channel = await self.__get_channel(guild)
 
             j = c["join"]
+            l = c["leave"]
 
             if await ctx.embed_requested():
                 emb = discord.Embed(color=await ctx.embed_color(), title="Current Welcome Settings")
@@ -121,7 +134,8 @@ class Welcome(commands.Cog):
                     name="General",
                     inline=False,
                     value=f"**Enabled:** {c['enabled']}\n**Channel:** {channel.mention}\n",
-                )
+                    ),
+                 )
                 emb.add_field(
                     name="Join",
                     inline=False,
@@ -133,6 +147,17 @@ class Welcome(commands.Cog):
                         f"**Bot message:** {j['bot']}"
                     ),
                 )
+                emb.add_field(
+                    name="Leave",
+                    inline=Fa;se,
+                    value=(
+                        f"**Enabled:** {l['enabled']}\n"
+                        f"**Channel:** {leave_channel.mention}\n"
+                        f"**Delete previous:** {l['delete']}\n"
+                        f"**Messages:** {len(l['messages'])}; do `{ctx.prefix}welcomeset join msg list` for a list\n"
+                        f"**Bot message:** {l['bot']}"
+                ),
+                )
                 await ctx.send(embed=emb)
             else:
                 msg = box(
@@ -142,6 +167,10 @@ class Welcome(commands.Cog):
                     f"    Enabled: {j['enabled']}\n"
                     f"    Channel: {join_channel}\n"
                     f"    Delete previous: {j['delete']}\n"
+                    f"  Leave:\n"
+                    f"    Enabled: {l['enabled']}\n"
+                    f"    Channel: {leave_channel}\n"
+                    f"    Delete previous: {l['delete']}\n"
                     "Current Welcome Settings",
                 )
 
