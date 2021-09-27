@@ -44,7 +44,8 @@ class Welcome(commands.Cog):
     async def on_member_remove(self, member: discord.Member):
         guild: discord.Guild = member.guild
         channel = await self.__get_channel(guild, "leave")
-        message = "Cya {member}!"
+        message = "**{member}** just left the server!
+        https://cdn.discordapp.com/attachments/865760307087409155/892171125130424391/Screenshot_1031.png"
         
         await self.__output_msg(guild, member, channel, message)
         
