@@ -9,27 +9,7 @@ class Welcome(commands.Cog):
     default_whisper = "Hey there {member.name}, welcome to {server.name}!"
     default_join = "{member.mention} https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
     default_leave = "bye"
-    guild_defaults = {"channel": None, "enabled": False,
-    "join": {
-            "enabled": True,
-            "channel": None,
-            "delete": False,
-            "last": None,
-            "counter": 0,
-            "whisper": {"state": "off", "message": default_whisper},
-            "messages": [default_join],
-            "bot": None,
-        },
-     "leave": {
-            "enabled": True,
-            "channel": None,
-            "delete": False,
-            "last": None,
-            "counter": 0,
-            "whisper": {"state": "off", "message": default_whisper},
-            "messages": [default_leave],
-            "bot": None,
-        }
+    guild_defaults = {"channel": None, "join_channel": None, "leave_channel": None, "enabled": False
                      }                  
     
     
@@ -47,7 +27,7 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
-        channel = await self.__get_channel(guild)
+        channel = await self.__get_join_channel(guild)
         
         user =  Union[discord.Member, discord.User]
         #await self.__dm_user(member, user)
@@ -178,8 +158,8 @@ class Welcome(commands.Cog):
                 
                 
 
-    @welcomeset.command(name="channel")
-    async def welcomeset_channel(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
+    @welcomeset.command(name="join")
+    async def welcomeset_join(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
         """Sets the channel to be used for event notices."""
 
         if not Welcome.__can_speak_in(channel):
@@ -194,6 +174,21 @@ class Welcome(commands.Cog):
 
         await ctx.send(f"I will now send notices to {channel.mention}.")
         
+    @welcomeset.command(name="leave")
+    async def welcomeset_leave(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
+        """Sets the channel to be used for event notices."""
+
+        if not Welcome.__can_speak_in(channel):
+            await ctx.send(
+                f"I do not have permission to send messages in {channel.mention}. "
+                "Check your permission settings and try again."
+            )
+            return
+
+        guild = ctx.guild
+        await self.config.guild(guild).channel.set(channel.id)
+
+        await ctx.send(f"I will now send notices to {channel.mention}.")
         
         
     @staticmethod
