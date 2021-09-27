@@ -89,7 +89,7 @@ class Welcome(commands.Cog):
             elif event_type is "leave":
                 channel = guild.get_channel(await self.config.guild(guild).leave_channel(), "none")
             else:
-                channel = guild.get_channel(await self.config.guild(guild).channel(), "none")
+                channel = guild.get_channel(await self.config.guild(guild).channel())
 
         if channel is None or not Welcome.__can_speak_in(channel):
             channel = guild.get_channel(await self.config.guild(guild).channel(), "none")
