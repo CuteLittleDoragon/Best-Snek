@@ -45,7 +45,7 @@ class Welcome(commands.Cog):
         guild: discord.Guild = member.guild
         channel = await self.__get_channel(guild, "leave")
         user =  Union[discord.Member, discord.User]
-        message = "Cya {member.mention}!"
+        message = "Cya!"
         
         await self.__output_msg(guild, member, channel, message)
         
