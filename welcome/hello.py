@@ -118,9 +118,9 @@ class Welcome(commands.Cog):
         if ctx.invoked_subcommand is None:
             guild: discord.Guild = ctx.guild
             c = await self.config.guild(guild).all()
-
-            channel = await self.__get_channel(guild, "none")
+            
             join_channel = await self.__get_channel(guild, "join")
+            channel = await self.__get_channel(guild, "none")
             leave_channel = await self.__get_channel(guild, "leave")
 
             j = c["join"]
