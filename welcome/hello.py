@@ -43,15 +43,16 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_leave(self, member: discord.Member):
         guild: discord.Guild = member.guild
+        await self.__dm_user(member)
         channel = await self.__get__channel(guild, "leave")
-        
+        await self.__dm_user(member)
         user =  Union[discord.Member, discord.User]
         message = "Cya {member.mention}!"
         
         await self.__output_msg(guild, member, channel, message)
         
         #If you want to dm the person (was used for tests)
-        #await self.__dm_user(member)
+        
         #await channel.send(message.format(member=user))    
     
     
