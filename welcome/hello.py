@@ -27,6 +27,7 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
+        await self.__dm_user(member)
         channel = await self.__get__channel(guild, "join")
         
         user =  Union[discord.Member, discord.User]
@@ -43,7 +44,7 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_leave(self, member: discord.Member):
         guild: discord.Guild = member.guild
-        await self.__dm_user(member)
+        
         channel = await self.__get__channel(guild, "leave")
         await self.__dm_user(member)
         user =  Union[discord.Member, discord.User]
