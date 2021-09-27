@@ -19,7 +19,7 @@ class Welcome(commands.Cog):
             "whisper": {"state": "off", "message": default_whisper},
             "messages": [default_join],
             "bot": None,
-        }
+        },
      "leave": {
             "enabled": True,
             "channel": None,
