@@ -27,7 +27,7 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         guild: discord.Guild = member.guild
-        await self.__dm_user(member)
+        await self.__dm_user(member, "hello")
         channel = await self.__get__channel(guild, "join")
         
         user =  Union[discord.Member, discord.User]
