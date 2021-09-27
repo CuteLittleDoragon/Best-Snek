@@ -71,7 +71,7 @@ class Welcome(commands.Cog):
     async def my_chance(self, ctx: commands.Context, channel: discord.TextChannel):
         await channel.send("https://cdn.discordapp.com/attachments/865760307087409155/879031015866261514/One_Less_Rival.mp4")
     
-    async def __get_channel(self, guild: discord.Guild) -> discord.TextChannel:
+    async def __get_channel(self, guild: discord.Guild, event_type: str) -> discord.TextChannel:
         """Gets the best text channel to use for event notices.
         Order of priority:
         1. User-defined channel
@@ -84,10 +84,15 @@ class Welcome(commands.Cog):
         channel_id: int = await self.config.guild(guild).channel()
 
         if channel_id is not None:
-            channel = guild.get_channel(channel_id)
+            channel = guild.get_channel(channel_id, "none")
 
         if channel is None or not Welcome.__can_speak_in(channel):
-            channel = guild.get_channel(await self.config.guild(guild).channel())
+            if event_type = "join":
+                channel = guild.get_channel(await self.config.guild(guild).join_channel(), "none")
+            elif event_type = "leave":
+                channel = guild.get_channel(await self.config.guild(guild).leave_channel(), "none")
+            else:
+                channel = guild.get_channel(await self.config.guild(guild).channel(), "none")
 
         if channel is None or not Welcome.__can_speak_in(channel):
             channel = guild.system_channel
