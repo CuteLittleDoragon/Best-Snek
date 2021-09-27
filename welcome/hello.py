@@ -134,8 +134,7 @@ class Welcome(commands.Cog):
                     name="General",
                     inline=False,
                     value=f"**Enabled:** {c['enabled']}\n**Channel:** {channel.mention}\n",
-                    ),
-                 )
+                    )
                 emb.add_field(
                     name="Join",
                     inline=False,
