@@ -104,7 +104,7 @@ class Reports(commands.Cog):
         pass
 
     @checks.admin_or_permissions(manage_guild=True)
-    @reportset.command(name="output")
+    @submitset.command(name="output")
     async def submit_output(self, ctx: commands.Context, channel: discord.TextChannel):
         """Set the channel where reports will be sent."""
         await self.config.guild(ctx.guild).output_channel.set(channel.id)
