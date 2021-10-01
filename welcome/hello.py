@@ -9,7 +9,7 @@ class Welcome(commands.Cog):
     default_whisper = "Hey there {member.name}, welcome to {server.name}!"
     default_join = "{member.mention} https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
     default_leave = "bye"
-    guild_defaults = {"channel": None, "join_channel": None, "leave_channel": None, "enabled": False, "join_msg": default_join
+    guild_defaults = {"channel": None, "join_channel": None, "leave_channel": None, "enabled": False, "join_msg": default_join, "join_prefix": ""
                      }                  
     
     
@@ -31,7 +31,7 @@ class Welcome(commands.Cog):
         
         user =  Union[discord.Member, discord.User]
         #await self.__dm_user(member, user)
-        message = "Welcome to the server, {member.mention}!" + " " + await self.config.guild(member.guild).join_msg()
+        message = await self.config.guild(member.guild).join_prefix() + ", {member.mention}!" + " " + await self.config.guild(member.guild).join_msg()
         #channel = guild.system_channel
         
         await self.__output_msg(guild, member, channel, message)
@@ -198,6 +198,15 @@ class Welcome(commands.Cog):
         await self.config.guild(guild).join_msg.set(msg)
 
         await ctx.send(f"Join Message Changed!")
+        
+    @welcomeset.command(name="join_prefix")
+    async def welcomeset_join(self, ctx: commands.Context, prefix: str) -> None:
+        """Sets the channel to be used for event notices."""
+
+        guild = ctx.guild
+        await self.config.guild(guild).join_prefix.set(prefix)
+
+        await ctx.send(f"Join Prefix Changed!")
     
     @welcomeset.command(name="leave")
     async def welcomeset_leave(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
