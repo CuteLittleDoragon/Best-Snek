@@ -313,8 +313,7 @@ class Reports(commands.Cog):
                         _("There was an error sending your report, please contact a server admin.")
                     )
             else:
-                await author.send(_("Your report was submitted. (Ticket #{})").format(val))
-                self.antispam[guild.id][author.id].stamp()
+                pass
 
     @submit.after_invoke
     async def report_cleanup(self, ctx: commands.Context):
