@@ -274,7 +274,7 @@ class Reports(commands.Cog):
 
         if _report:
             _m = copy(ctx.message)
-            await message.delete()
+            await ctx.message.delete()
             _m.content = _report
             _m.content = _m.clean_content
             val = await self.send_report(ctx, _m, guild)
