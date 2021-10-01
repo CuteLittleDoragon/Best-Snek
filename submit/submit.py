@@ -98,21 +98,21 @@ class Reports(commands.Cog):
 
     @checks.admin_or_permissions(manage_guild=True)
     @commands.guild_only()
-    @commands.group(name="reportset")
-    async def reportset(self, ctx: commands.Context):
+    @commands.group(name="submittset")
+    async def submitset(self, ctx: commands.Context):
         """Manage Reports."""
         pass
 
     @checks.admin_or_permissions(manage_guild=True)
     @reportset.command(name="output")
-    async def reportset_output(self, ctx: commands.Context, channel: discord.TextChannel):
+    async def submit_output(self, ctx: commands.Context, channel: discord.TextChannel):
         """Set the channel where reports will be sent."""
         await self.config.guild(ctx.guild).output_channel.set(channel.id)
         await ctx.send(_("The report channel has been set."))
 
     @checks.admin_or_permissions(manage_guild=True)
-    @reportset.command(name="toggle", aliases=["toggleactive"])
-    async def reportset_toggle(self, ctx: commands.Context):
+    @submitset.command(name="toggle", aliases=["toggleactive"])
+    async def submitset_toggle(self, ctx: commands.Context):
         """Enable or disable reporting for this server."""
         active = await self.config.guild(ctx.guild).active()
         active = not active
