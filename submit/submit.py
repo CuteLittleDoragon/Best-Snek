@@ -315,7 +315,7 @@ class Reports(commands.Cog):
                 await author.send(_("Your report was submitted. (Ticket #{})").format(val))
                 self.antispam[guild.id][author.id].stamp()
 
-    @report.after_invoke
+    @submit.after_invoke
     async def report_cleanup(self, ctx: commands.Context):
         """
         The logic is cleaner this way
