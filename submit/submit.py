@@ -387,7 +387,7 @@ class Reports(commands.Cog):
 
     @commands.guild_only()
     @checks.mod_or_permissions(manage_roles=True)
-    @report.command(name="interact")
+    @submit.command(name="interact")
     async def response(self, ctx, ticket_number: int):
         """Open a message tunnel.
         This tunnel will forward things you say in this channel
@@ -396,7 +396,7 @@ class Reports(commands.Cog):
         """
 
         guild = ctx.guild
-        rec = await self.config.custom("REPORT", guild.id, ticket_number).report()
+        rec = await self.config.custom("REPORT", guild.id, ticket_number).submit()
 
         try:
             user = guild.get_member(rec.get("user_id"))
