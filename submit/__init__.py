@@ -1,5 +1,5 @@
 from redbot.core.bot import Red
-from .reports import Reports
+from .submit import Reports
 
 
 def setup(bot: Red):
