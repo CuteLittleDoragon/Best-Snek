@@ -3,13 +3,13 @@ from typing import Union
 
 
 from redbot.core import  Config, commands, checks
-
+default_join = "{member.mention}! \n https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
+default_prefix = "Welcome to the server"
+default_leave = "bye"
 
 class Welcome(commands.Cog):
     default_whisper = "Hey there {member.name}, welcome to {server.name}!"
-    default_join = "{member.mention}! \n https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
-    default_prefix = "Welcome to the server"
-    default_leave = "bye"
+    
     guild_defaults = {"channel": None, "join_channel": None, "leave_channel": None, "enabled": False, "join_msg": default_join, "join_prefix": default_prefix
                      }                  
     
