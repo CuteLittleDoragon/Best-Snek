@@ -1,6 +1,6 @@
 from redbot.core.bot import Red
-from .submit import submit
+from .reports import Reports
 
 
 def setup(bot: Red):
-    bot.add_cog(submit(bot))
+    bot.add_cog(Reports(bot))
