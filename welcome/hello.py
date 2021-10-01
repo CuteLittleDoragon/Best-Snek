@@ -3,7 +3,7 @@ from typing import Union
 
 
 from redbot.core import  Config, commands, checks
-default_join = "{member.mention}! \n https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
+default_join = "\n https://cdn.discordapp.com/attachments/866485084660301833/879501914826485800/Excited_Miia.gif"
 default_prefix = "Welcome to the server"
 default_leave = "bye"
 
