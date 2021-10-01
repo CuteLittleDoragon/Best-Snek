@@ -98,7 +98,7 @@ class Reports(commands.Cog):
 
     @checks.admin_or_permissions(manage_guild=True)
     @commands.guild_only()
-    @commands.group(name="submittset")
+    @commands.group(name="submitset")
     async def submitset(self, ctx: commands.Context):
         """Manage Reports."""
         pass
