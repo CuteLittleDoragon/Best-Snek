@@ -191,7 +191,7 @@ class Welcome(commands.Cog):
         await ctx.send(f"I will now send join notices to {channel.mention}.")
     
     @welcomeset.command(name="join_msg")
-    async def welcomeset_join(self, ctx: commands.Context, msg: str) -> None:
+    async def welcomeset_join_msg(self, ctx: commands.Context, msg: str) -> None:
         """Sets the channel to be used for event notices."""
 
         guild = ctx.guild
@@ -200,7 +200,7 @@ class Welcome(commands.Cog):
         await ctx.send(f"Join Message Changed!")
         
     @welcomeset.command(name="join_prefix")
-    async def welcomeset_join(self, ctx: commands.Context, prefix: str) -> None:
+    async def welcomeset_join_prefix(self, ctx: commands.Context, prefix: str) -> None:
         """Sets the channel to be used for event notices."""
 
         guild = ctx.guild
