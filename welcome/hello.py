@@ -121,6 +121,7 @@ class Welcome(commands.Cog):
             join_channel = await self.__get_channel(guild, "join")
             channel = await self.__get_channel(guild, "none")
             leave_channel = await self.__get_channel(guild, "leave")
+   
 
             if await ctx.embed_requested():
                 emb = discord.Embed(color=await ctx.embed_color(), title="Current Welcome Settings")
@@ -133,22 +134,14 @@ class Welcome(commands.Cog):
                     name="Join",
                     inline=False,
                     value=(
-                        f"**Enabled:** {j['enabled']}\n"
                         f"**Channel:** {join_channel.mention}\n"
-                        f"**Delete previous:** {j['delete']}\n"
-                        f"**Messages:** {len(j['messages'])}; do `{ctx.prefix}welcomeset join msg list` for a list\n"
-                        f"**Bot message:** {j['bot']}"
                     ),
                 )
                 emb.add_field(
                     name="Leave",
                     inline=False,
                     value=(
-                        f"**Enabled:** {l['enabled']}\n"
                         f"**Channel:** {leave_channel.mention}\n"
-                        f"**Delete previous:** {l['delete']}\n"
-                        f"**Messages:** {len(l['messages'])}; do `{ctx.prefix}welcomeset join msg list` for a list\n"
-                        f"**Bot message:** {l['bot']}"
                 ),
                 )
                 await ctx.send(embed=emb)
@@ -157,13 +150,9 @@ class Welcome(commands.Cog):
                     f"  Enabled: {c['enabled']}\n"
                     f"  Channel: {channel}\n"
                     f"  Join:\n"
-                    f"    Enabled: {j['enabled']}\n"
                     f"    Channel: {join_channel}\n"
-                    f"    Delete previous: {j['delete']}\n"
                     f"  Leave:\n"
-                    f"    Enabled: {l['enabled']}\n"
                     f"    Channel: {leave_channel}\n"
-                    f"    Delete previous: {l['delete']}\n"
                     "Current Welcome Settings",
                 )
 
