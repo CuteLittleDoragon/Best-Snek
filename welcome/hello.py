@@ -122,9 +122,6 @@ class Welcome(commands.Cog):
             channel = await self.__get_channel(guild, "none")
             leave_channel = await self.__get_channel(guild, "leave")
 
-            j = c["join"]
-            l = c["leave"]
-
             if await ctx.embed_requested():
                 emb = discord.Embed(color=await ctx.embed_color(), title="Current Welcome Settings")
                 emb.add_field(
