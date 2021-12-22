@@ -32,7 +32,7 @@ class Welcome(commands.Cog):
         
         user =  Union[discord.Member, discord.User]
         #await self.__dm_user(member, user)
-        message = await self.config.guild(member.guild).join_prefix() + ", {member.mention}!" + " " + await self.config.guild(member.guild).join_msg()
+        message = await self.config.guild(member.guild).join_prefix() + ", {member.mention}!" + " " + "{" + await self.config.guild(member.guild).join_msg() + "}"
         #channel = guild.system_channel
         
         await self.__output_msg(guild, member, channel, message)
