@@ -25,17 +25,17 @@ class Welcome(commands.Cog):
         if not self.bot.ready:
             self.bot.cogs_ready.ready_up("welcome")
                 
-    @commands.Cog.listener()
-    async def on_member_join(self, member: discord.Member):
-        guild: discord.Guild = member.guild
-        channel = await self.__get_channel(guild, "join")
+    #@commands.Cog.listener()
+    #async def on_member_join(self, member: discord.Member):
+        #guild: discord.Guild = member.guild
+       # channel = await self.__get_channel(guild, "join")
         
-        user =  Union[discord.Member, discord.User]
+       # user =  Union[discord.Member, discord.User]
         #await self.__dm_user(member, user)
-        message = await self.config.guild(member.guild).join_prefix() + ", {member.mention}!" + " " + await self.config.guild(member.guild).join_msg()
+      #  message = await self.config.guild(member.guild).join_prefix() + ", {member.mention}!" + " " + await self.config.guild(member.guild).join_msg()
         #channel = guild.system_channel
         
-        await self.__output_msg(guild, member, channel, message)
+       # await self.__output_msg(guild, member, channel, message)
         
         #If you want to dm the person (was used for tests)
         #await self.__dm_user(member)
